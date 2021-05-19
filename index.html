@@ -1,0 +1,55 @@
+<!---
+    git commands
+
+        
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    </head>
+
+    <body>
+        
+        <div id="app">
+            <div id="head">
+                <div class="search-box">
+                    <input type="text" class="search-bar" placeholder="Zip Code" v-model="text" @keypress="setWeather">
+                    <p> {{ text_valid }} </p>
+                    <input type="text" class="search-bar" id="text2" placeholder="F or C" v-model="unit" @keypress="setWeather">
+                    <p> {{ unit_valid }}</p>
+                <!-- <button type="submit" class="button" @click=setWeather>Search</button> -->
+                
+                </div>
+            </div>
+            
+            <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
+                <div class="location-box">
+                    <div class="location"> {{ weather.name }}, {{ weather.sys.country }}</div>
+                </div>
+
+                <div class="weather-box">
+                    <div class="temp"> {{Math.round(weather.main.temp)}}° {{ unit_f_c }}  </div>
+                    <div class="weather"> {{ weather.weather[0].main }}</div>
+                </div>
+            </div>
+        </div>    
+        
+
+       
+
+
+
+        <script src="script.js"></script>
+    </body>
+</html>
