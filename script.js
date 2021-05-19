@@ -1,11 +1,14 @@
-
+/*
+    Name:Noah Scott
+    Date: 5/19/21
+*/
 
 
 var app = new Vue({
     el: "#app", 
     data () {
         return {
-            apiKey: '066f7dfe9eba8d3019746f5a058878be',
+            apiKey: '066f7dfe9eba8d3019746f5a058878be', 
             url: 'https://api.openweathermap.org/data/2.5/',
             unit: '',
             unit_f_c: '',
@@ -47,14 +50,14 @@ var app = new Vue({
                     return res.json();
                     }).then(this.getResults);
                 }//end Else If
-                else
+                else// if not equal to F, f, C, or c gives error
                 {
                     this.unit_valid = "invalid please enter a C or F"
                 }
                 
                 
             }
-            else if(a.key == "Enter" && this.text.length != 5)
+            else if(a.key == "Enter" && this.text.length != 5)//if zip code is not equal to 5 digits then gives error
             {
                 this.text_valid = "Please Enter a 5 digit Zip Code"
             }
@@ -64,23 +67,6 @@ var app = new Vue({
             this.weather = results;
         },
 
-        backgroundChange() {
-                    if (this.weather.weather == 'Rain') {
-                        document.body.style.backgroundImage = "url('Rain.jpg')";
-                        } 
-                        else if (this.weather.weather == 'Clouds') {
-                            document.body.style.backgroundImage = "url('cloudy.jpg')";
-                        } 
-                        else if (this.weather.weather == 'Clear') {
-                            document.body.style.backgroundImage = "url('Sunny.jpg')";
-                        } 
-                        else if (this.weather.weather == 'Snow') {
-                            document.body.style.backgroundImage = "url('Snowy.jpg')";
-                        } 
-                        else {
-                            document.body.style.backgroundImage = "url('Sea.jpg')";
-                        }
-        }
     }   
     
 })
